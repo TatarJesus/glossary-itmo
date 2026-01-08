@@ -1,5 +1,3 @@
-export const API_URL = import.meta.env.VITE_API_URL || '/api';
-
 export const CATEGORY_COLORS: Record<string, string> = {
   'nodejs-core': '#22c55e',
   'frameworks': '#f472b6',

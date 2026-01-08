@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { API_URL } from '../constants';
 import type { Term, Category, Metadata, GraphData } from '../types';
 
 interface GlossaryData {
@@ -9,6 +8,42 @@ interface GlossaryData {
   graphData: GraphData | null;
   loading: boolean;
   error: string | null;
+}
+
+interface GlossaryJSON {
+  metadata: Metadata;
+  categories: Category[];
+  terms: Term[];
+}
+
+function buildGraphData(terms: Term[]): GraphData {
+  const nodes = terms.map(term => ({
+    data: {
+      id: term.id,
+      label: term.term,
+      category: term.category,
+      definition: term.definition
+    }
+  }));
+
+  const edges: GraphData['edges'] = [];
+  const termIds = new Set(terms.map(t => t.id));
+
+  terms.forEach(term => {
+    term.relatedTerms.forEach(relatedId => {
+      if (termIds.has(relatedId)) {
+        edges.push({
+          data: {
+            id: `${term.id}-${relatedId}`,
+            source: term.id,
+            target: relatedId
+          }
+        });
+      }
+    });
+  });
+
+  return { nodes, edges };
 }
 
 export function useGlossaryData(): GlossaryData {
@@ -22,21 +57,18 @@ export function useGlossaryData(): GlossaryData {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [metaRes, catsRes, termsRes, graphRes] = await Promise.all([
-          fetch(`${API_URL}/metadata`),
-          fetch(`${API_URL}/categories`),
-          fetch(`${API_URL}/terms`),
-          fetch(`${API_URL}/graph`)
-        ]);
+        const response = await fetch(`${import.meta.env.BASE_URL}glossary.json`);
 
-        if (!metaRes.ok || !catsRes.ok || !termsRes.ok || !graphRes.ok) {
-          throw new Error('Failed to fetch data');
+        if (!response.ok) {
+          throw new Error('Failed to fetch glossary data');
         }
 
-        setMetadata(await metaRes.json());
-        setCategories(await catsRes.json());
-        setTerms(await termsRes.json());
-        setGraphData(await graphRes.json());
+        const data: GlossaryJSON = await response.json();
+
+        setMetadata(data.metadata);
+        setCategories(data.categories);
+        setTerms(data.terms);
+        setGraphData(buildGraphData(data.terms));
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Unknown error');
         console.error('Failed to fetch data:', err);
