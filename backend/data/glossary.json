@@ -1,0 +1,711 @@
+{
+  "metadata": {
+    "title": "Глоссарий терминов ВКР",
+    "topic": "Исследование производительности серверных веб-фреймворков и библиотек на основе Node.js",
+    "author": "Зиганшин Станислав Эдуардович",
+    "version": "1.0.0",
+    "lastUpdated": "2026-01-08"
+  },
+  "categories": [
+    {
+      "id": "nodejs-core",
+      "name": "Ядро Node.js",
+      "description": "Основные концепции и компоненты платформы Node.js"
+    },
+    {
+      "id": "frameworks",
+      "name": "Веб-фреймворки",
+      "description": "Серверные веб-фреймворки на базе Node.js"
+    },
+    {
+      "id": "performance",
+      "name": "Производительность",
+      "description": "Метрики и методы оценки производительности"
+    },
+    {
+      "id": "http",
+      "name": "HTTP и сетевые протоколы",
+      "description": "Протоколы и стандарты веб-коммуникации"
+    },
+    {
+      "id": "async",
+      "name": "Асинхронное программирование",
+      "description": "Паттерны и механизмы асинхронного выполнения"
+    },
+    {
+      "id": "architecture",
+      "name": "Архитектура приложений",
+      "description": "Архитектурные паттерны и подходы"
+    },
+    {
+      "id": "testing",
+      "name": "Тестирование и бенчмаркинг",
+      "description": "Инструменты и методы тестирования производительности"
+    }
+  ],
+  "terms": [
+    {
+      "id": "nodejs",
+      "term": "Node.js",
+      "definition": "Кроссплатформенная среда выполнения JavaScript с открытым исходным кодом, построенная на движке V8 от Google. Позволяет выполнять JavaScript-код на стороне сервера, используя событийно-ориентированную, неблокирующую модель ввода-вывода.",
+      "category": "nodejs-core",
+      "relatedTerms": ["v8-engine", "event-loop", "libuv", "npm"],
+      "sources": [
+        {
+          "title": "Node.js Official Documentation",
+          "url": "https://nodejs.org/en/docs/"
+        }
+      ]
+    },
+    {
+      "id": "v8-engine",
+      "term": "V8 Engine",
+      "definition": "Высокопроизводительный движок JavaScript и WebAssembly с открытым исходным кодом, разработанный Google. Написан на C++ и используется в Chrome и Node.js. Компилирует JavaScript непосредственно в машинный код перед выполнением.",
+      "category": "nodejs-core",
+      "relatedTerms": ["nodejs", "jit-compilation", "garbage-collection"],
+      "sources": [
+        {
+          "title": "V8 JavaScript Engine",
+          "url": "https://v8.dev/"
+        }
+      ]
+    },
+    {
+      "id": "event-loop",
+      "term": "Event Loop",
+      "definition": "Механизм, позволяющий Node.js выполнять неблокирующие операции ввода-вывода, несмотря на однопоточность JavaScript. Постоянно проверяет очередь событий и выполняет соответствующие колбэки, обеспечивая асинхронное выполнение кода.",
+      "category": "nodejs-core",
+      "relatedTerms": ["nodejs", "libuv", "callback", "non-blocking-io"],
+      "sources": [
+        {
+          "title": "The Node.js Event Loop",
+          "url": "https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/"
+        }
+      ]
+    },
+    {
+      "id": "libuv",
+      "term": "libuv",
+      "definition": "Кроссплатформенная библиотека на C, предоставляющая поддержку асинхронного ввода-вывода. Является основой Event Loop в Node.js и обеспечивает абстракцию над различными механизмами асинхронного ввода-вывода операционных систем.",
+      "category": "nodejs-core",
+      "relatedTerms": ["event-loop", "nodejs", "thread-pool"],
+      "sources": [
+        {
+          "title": "libuv Documentation",
+          "url": "http://docs.libuv.org/"
+        }
+      ]
+    },
+    {
+      "id": "npm",
+      "term": "npm (Node Package Manager)",
+      "definition": "Менеджер пакетов по умолчанию для Node.js. Включает CLI-клиент и онлайн-базу данных публичных и приватных пакетов (npm registry). Позволяет разработчикам устанавливать, публиковать и управлять зависимостями проекта.",
+      "category": "nodejs-core",
+      "relatedTerms": ["nodejs", "package-json", "yarn", "pnpm"],
+      "sources": [
+        {
+          "title": "npm Documentation",
+          "url": "https://docs.npmjs.com/"
+        }
+      ]
+    },
+    {
+      "id": "express",
+      "term": "Express.js",
+      "definition": "Минималистичный и гибкий веб-фреймворк для Node.js, предоставляющий набор функций для веб и мобильных приложений. Является де-факто стандартом для создания веб-серверов на Node.js благодаря простоте и обширной экосистеме middleware.",
+      "category": "frameworks",
+      "relatedTerms": ["nodejs", "middleware", "routing", "koa"],
+      "sources": [
+        {
+          "title": "Express.js Official Website",
+          "url": "https://expressjs.com/"
+        }
+      ]
+    },
+    {
+      "id": "fastify",
+      "term": "Fastify",
+      "definition": "Высокопроизводительный веб-фреймворк для Node.js, ориентированный на минимальные накладные расходы и максимальную скорость. Поддерживает JSON Schema для валидации и сериализации, что обеспечивает дополнительный прирост производительности.",
+      "category": "frameworks",
+      "relatedTerms": ["nodejs", "json-schema", "plugin-architecture", "express"],
+      "sources": [
+        {
+          "title": "Fastify Documentation",
+          "url": "https://www.fastify.io/docs/latest/"
+        }
+      ]
+    },
+    {
+      "id": "koa",
+      "term": "Koa.js",
+      "definition": "Веб-фреймворк нового поколения для Node.js, созданный командой Express. Использует async/await вместо колбэков, предоставляя более элегантный способ обработки ошибок и написания middleware.",
+      "category": "frameworks",
+      "relatedTerms": ["nodejs", "express", "middleware", "async-await"],
+      "sources": [
+        {
+          "title": "Koa.js Official Website",
+          "url": "https://koajs.com/"
+        }
+      ]
+    },
+    {
+      "id": "hapi",
+      "term": "Hapi.js",
+      "definition": "Мощный и гибкий фреймворк для создания приложений и сервисов на Node.js. Ориентирован на конфигурацию вместо кода, предоставляет встроенную поддержку валидации, кэширования и аутентификации.",
+      "category": "frameworks",
+      "relatedTerms": ["nodejs", "joi", "plugin-architecture"],
+      "sources": [
+        {
+          "title": "Hapi.js Official Website",
+          "url": "https://hapi.dev/"
+        }
+      ]
+    },
+    {
+      "id": "nestjs",
+      "term": "NestJS",
+      "definition": "Прогрессивный фреймворк для создания эффективных и масштабируемых серверных приложений на Node.js. Использует TypeScript, сочетает элементы ООП, функционального и реактивного программирования. Архитектурно вдохновлён Angular.",
+      "category": "frameworks",
+      "relatedTerms": ["nodejs", "typescript", "dependency-injection", "express", "fastify"],
+      "sources": [
+        {
+          "title": "NestJS Documentation",
+          "url": "https://docs.nestjs.com/"
+        }
+      ]
+    },
+    {
+      "id": "middleware",
+      "term": "Middleware",
+      "definition": "Функции, имеющие доступ к объектам запроса и ответа, а также к следующей функции middleware в цикле обработки запроса. Используются для выполнения кода, изменения запроса/ответа, завершения цикла или вызова следующего middleware.",
+      "category": "architecture",
+      "relatedTerms": ["express", "koa", "request-response-cycle", "plugin-architecture"],
+      "sources": [
+        {
+          "title": "Express.js Middleware",
+          "url": "https://expressjs.com/en/guide/using-middleware.html"
+        }
+      ]
+    },
+    {
+      "id": "routing",
+      "term": "Routing (Маршрутизация)",
+      "definition": "Механизм определения того, как приложение отвечает на клиентский запрос к определённому эндпоинту (URI) и HTTP-методу. Каждый маршрут может иметь одну или несколько функций-обработчиков.",
+      "category": "architecture",
+      "relatedTerms": ["http-methods", "endpoint", "middleware", "rest-api"],
+      "sources": [
+        {
+          "title": "Express.js Routing",
+          "url": "https://expressjs.com/en/guide/routing.html"
+        }
+      ]
+    },
+    {
+      "id": "rest-api",
+      "term": "REST API",
+      "definition": "Архитектурный стиль для распределённых систем, использующий HTTP-протокол для взаимодействия между клиентом и сервером. Основан на принципах: клиент-сервер, отсутствие состояния, кэширование, единообразие интерфейса.",
+      "category": "http",
+      "relatedTerms": ["http-methods", "endpoint", "json", "stateless"],
+      "sources": [
+        {
+          "title": "REST API Tutorial",
+          "url": "https://restfulapi.net/"
+        }
+      ]
+    },
+    {
+      "id": "http-methods",
+      "term": "HTTP Methods (Методы HTTP)",
+      "definition": "Методы запроса, указывающие желаемое действие над ресурсом. Основные методы: GET (получение), POST (создание), PUT (полное обновление), PATCH (частичное обновление), DELETE (удаление).",
+      "category": "http",
+      "relatedTerms": ["rest-api", "crud", "idempotency"],
+      "sources": [
+        {
+          "title": "MDN HTTP Methods",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods"
+        }
+      ]
+    },
+    {
+      "id": "json",
+      "term": "JSON (JavaScript Object Notation)",
+      "definition": "Текстовый формат обмена данными, основанный на подмножестве JavaScript. Легко читается человеком и парсится машиной. Является стандартом де-факто для обмена данными в веб-приложениях.",
+      "category": "http",
+      "relatedTerms": ["rest-api", "serialization", "json-schema"],
+      "sources": [
+        {
+          "title": "JSON.org",
+          "url": "https://www.json.org/"
+        }
+      ]
+    },
+    {
+      "id": "json-schema",
+      "term": "JSON Schema",
+      "definition": "Декларативный язык для описания структуры и валидации JSON-документов. Позволяет определять типы данных, обязательные поля, форматы и ограничения. Используется в Fastify для оптимизации сериализации.",
+      "category": "http",
+      "relatedTerms": ["json", "fastify", "validation"],
+      "sources": [
+        {
+          "title": "JSON Schema",
+          "url": "https://json-schema.org/"
+        }
+      ]
+    },
+    {
+      "id": "latency",
+      "term": "Latency (Задержка)",
+      "definition": "Время, прошедшее между отправкой запроса и получением ответа. Измеряется в миллисекундах. Является ключевой метрикой производительности веб-приложений, особенно для интерактивных сервисов.",
+      "category": "performance",
+      "relatedTerms": ["throughput", "response-time", "benchmarking"],
+      "sources": [
+        {
+          "title": "Web Performance",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/Performance"
+        }
+      ]
+    },
+    {
+      "id": "throughput",
+      "term": "Throughput (Пропускная способность)",
+      "definition": "Количество запросов, которое система способна обработать за единицу времени. Обычно измеряется в запросах в секунду (RPS). Важная метрика для оценки масштабируемости и ёмкости системы.",
+      "category": "performance",
+      "relatedTerms": ["latency", "rps", "benchmarking", "scalability"],
+      "sources": [
+        {
+          "title": "Performance Testing Concepts",
+          "url": "https://www.perfmatrix.com/throughput-in-performance-testing/"
+        }
+      ]
+    },
+    {
+      "id": "rps",
+      "term": "RPS (Requests Per Second)",
+      "definition": "Метрика, показывающая количество запросов, обрабатываемых сервером за одну секунду. Используется для сравнения производительности веб-фреймворков и оценки пропускной способности системы.",
+      "category": "performance",
+      "relatedTerms": ["throughput", "benchmarking", "load-testing"],
+      "sources": [
+        {
+          "title": "TechEmpower Web Framework Benchmarks",
+          "url": "https://www.techempower.com/benchmarks/"
+        }
+      ]
+    },
+    {
+      "id": "benchmarking",
+      "term": "Benchmarking (Бенчмаркинг)",
+      "definition": "Процесс измерения производительности системы с использованием стандартизированных тестов. Позволяет сравнивать различные решения в одинаковых условиях и выявлять узкие места производительности.",
+      "category": "testing",
+      "relatedTerms": ["load-testing", "stress-testing", "profiling", "rps"],
+      "sources": [
+        {
+          "title": "Node.js Benchmarking Guide",
+          "url": "https://nodejs.org/en/docs/guides/simple-profiling/"
+        }
+      ]
+    },
+    {
+      "id": "load-testing",
+      "term": "Load Testing (Нагрузочное тестирование)",
+      "definition": "Тип тестирования производительности, при котором система подвергается ожидаемой нагрузке для проверки её поведения. Помогает определить максимальную пропускную способность и время отклика под нагрузкой.",
+      "category": "testing",
+      "relatedTerms": ["benchmarking", "stress-testing", "autocannon", "wrk"],
+      "sources": [
+        {
+          "title": "Load Testing Best Practices",
+          "url": "https://k6.io/docs/testing-guides/load-testing/"
+        }
+      ]
+    },
+    {
+      "id": "stress-testing",
+      "term": "Stress Testing (Стресс-тестирование)",
+      "definition": "Тестирование системы за пределами нормальных рабочих условий для определения точки отказа. Помогает понять, как система деградирует под экстремальной нагрузкой и как восстанавливается.",
+      "category": "testing",
+      "relatedTerms": ["load-testing", "benchmarking", "breaking-point"],
+      "sources": [
+        {
+          "title": "Stress Testing Guide",
+          "url": "https://k6.io/docs/testing-guides/stress-testing/"
+        }
+      ]
+    },
+    {
+      "id": "autocannon",
+      "term": "Autocannon",
+      "definition": "Быстрый HTTP/1.1 бенчмаркинг инструмент, написанный на Node.js. Позволяет генерировать высокую нагрузку и собирать детальную статистику по времени отклика, пропускной способности и ошибкам.",
+      "category": "testing",
+      "relatedTerms": ["benchmarking", "load-testing", "wrk", "nodejs"],
+      "sources": [
+        {
+          "title": "Autocannon GitHub",
+          "url": "https://github.com/mcollina/autocannon"
+        }
+      ]
+    },
+    {
+      "id": "wrk",
+      "term": "wrk",
+      "definition": "Современный HTTP-бенчмаркинг инструмент, способный генерировать значительную нагрузку при запуске на одном многоядерном процессоре. Поддерживает Lua-скрипты для кастомизации запросов.",
+      "category": "testing",
+      "relatedTerms": ["benchmarking", "load-testing", "autocannon"],
+      "sources": [
+        {
+          "title": "wrk GitHub",
+          "url": "https://github.com/wg/wrk"
+        }
+      ]
+    },
+    {
+      "id": "callback",
+      "term": "Callback (Колбэк)",
+      "definition": "Функция, передаваемая в другую функцию в качестве аргумента и вызываемая после завершения асинхронной операции. Традиционный способ обработки асинхронности в Node.js до появления Promise и async/await.",
+      "category": "async",
+      "relatedTerms": ["promise", "async-await", "callback-hell", "event-loop"],
+      "sources": [
+        {
+          "title": "Node.js Callback Pattern",
+          "url": "https://nodejs.org/en/docs/guides/blocking-vs-non-blocking/"
+        }
+      ]
+    },
+    {
+      "id": "promise",
+      "term": "Promise (Промис)",
+      "definition": "Объект, представляющий результат асинхронной операции, который может быть доступен сейчас, в будущем или никогда. Имеет три состояния: pending, fulfilled, rejected. Позволяет избежать callback hell.",
+      "category": "async",
+      "relatedTerms": ["callback", "async-await", "then-catch"],
+      "sources": [
+        {
+          "title": "MDN Promise",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+        }
+      ]
+    },
+    {
+      "id": "async-await",
+      "term": "Async/Await",
+      "definition": "Синтаксический сахар над Promise, делающий асинхронный код похожим на синхронный. Ключевое слово async объявляет асинхронную функцию, await приостанавливает выполнение до разрешения Promise.",
+      "category": "async",
+      "relatedTerms": ["promise", "callback", "koa", "error-handling"],
+      "sources": [
+        {
+          "title": "MDN Async/Await",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises"
+        }
+      ]
+    },
+    {
+      "id": "non-blocking-io",
+      "term": "Non-blocking I/O (Неблокирующий ввод-вывод)",
+      "definition": "Модель ввода-вывода, при которой операции не блокируют выполнение программы. Позволяет обрабатывать множество операций параллельно без создания отдельных потоков для каждой.",
+      "category": "async",
+      "relatedTerms": ["event-loop", "libuv", "blocking-io"],
+      "sources": [
+        {
+          "title": "Node.js Blocking vs Non-Blocking",
+          "url": "https://nodejs.org/en/docs/guides/blocking-vs-non-blocking/"
+        }
+      ]
+    },
+    {
+      "id": "thread-pool",
+      "term": "Thread Pool (Пул потоков)",
+      "definition": "Набор предварительно созданных потоков в libuv для выполнения блокирующих операций (файловая система, DNS, криптография). По умолчанию содержит 4 потока, размер настраивается через UV_THREADPOOL_SIZE.",
+      "category": "nodejs-core",
+      "relatedTerms": ["libuv", "event-loop", "worker-threads"],
+      "sources": [
+        {
+          "title": "libuv Thread Pool",
+          "url": "http://docs.libuv.org/en/v1.x/threadpool.html"
+        }
+      ]
+    },
+    {
+      "id": "worker-threads",
+      "term": "Worker Threads",
+      "definition": "Модуль Node.js, позволяющий выполнять JavaScript в параллельных потоках. Полезен для CPU-интенсивных задач, которые иначе блокировали бы Event Loop. Потоки имеют изолированные контексты V8.",
+      "category": "nodejs-core",
+      "relatedTerms": ["thread-pool", "event-loop", "cpu-bound"],
+      "sources": [
+        {
+          "title": "Node.js Worker Threads",
+          "url": "https://nodejs.org/api/worker_threads.html"
+        }
+      ]
+    },
+    {
+      "id": "cluster",
+      "term": "Cluster Module",
+      "definition": "Модуль Node.js для создания дочерних процессов, разделяющих серверные порты. Позволяет масштабировать приложение на все доступные ядра процессора, создавая по одному процессу на ядро.",
+      "category": "nodejs-core",
+      "relatedTerms": ["worker-threads", "scalability", "load-balancing"],
+      "sources": [
+        {
+          "title": "Node.js Cluster",
+          "url": "https://nodejs.org/api/cluster.html"
+        }
+      ]
+    },
+    {
+      "id": "serialization",
+      "term": "Serialization (Сериализация)",
+      "definition": "Процесс преобразования объекта в формат, пригодный для передачи или хранения (например, JSON-строку). Десериализация — обратный процесс. Производительность сериализации критична для высоконагруженных API.",
+      "category": "performance",
+      "relatedTerms": ["json", "json-schema", "fastify"],
+      "sources": [
+        {
+          "title": "Fastify Serialization",
+          "url": "https://www.fastify.io/docs/latest/Reference/Validation-and-Serialization/"
+        }
+      ]
+    },
+    {
+      "id": "plugin-architecture",
+      "term": "Plugin Architecture (Плагинная архитектура)",
+      "definition": "Архитектурный паттерн, позволяющий расширять функциональность приложения через подключаемые модули. В Fastify и Hapi плагины инкапсулируют маршруты, декораторы и хуки.",
+      "category": "architecture",
+      "relatedTerms": ["fastify", "hapi", "middleware", "encapsulation"],
+      "sources": [
+        {
+          "title": "Fastify Plugins",
+          "url": "https://www.fastify.io/docs/latest/Reference/Plugins/"
+        }
+      ]
+    },
+    {
+      "id": "dependency-injection",
+      "term": "Dependency Injection (Внедрение зависимостей)",
+      "definition": "Паттерн проектирования, при котором объект получает свои зависимости извне, а не создаёт их самостоятельно. Улучшает тестируемость и модульность кода. Активно используется в NestJS.",
+      "category": "architecture",
+      "relatedTerms": ["nestjs", "ioc-container", "solid"],
+      "sources": [
+        {
+          "title": "NestJS Dependency Injection",
+          "url": "https://docs.nestjs.com/fundamentals/custom-providers"
+        }
+      ]
+    },
+    {
+      "id": "typescript",
+      "term": "TypeScript",
+      "definition": "Строго типизированный надмножество JavaScript, компилируемое в чистый JavaScript. Добавляет статическую типизацию, интерфейсы и современные возможности ECMAScript. Улучшает поддержку IDE и помогает находить ошибки на этапе компиляции.",
+      "category": "nodejs-core",
+      "relatedTerms": ["nodejs", "nestjs", "type-safety"],
+      "sources": [
+        {
+          "title": "TypeScript Documentation",
+          "url": "https://www.typescriptlang.org/docs/"
+        }
+      ]
+    },
+    {
+      "id": "jit-compilation",
+      "term": "JIT Compilation (JIT-компиляция)",
+      "definition": "Метод выполнения кода, при котором компиляция происходит во время выполнения программы, а не заранее. V8 использует JIT для преобразования JavaScript в оптимизированный машинный код.",
+      "category": "nodejs-core",
+      "relatedTerms": ["v8-engine", "optimization", "turbofan"],
+      "sources": [
+        {
+          "title": "V8 JIT Compilation",
+          "url": "https://v8.dev/blog/turbofan-jit"
+        }
+      ]
+    },
+    {
+      "id": "garbage-collection",
+      "term": "Garbage Collection (Сборка мусора)",
+      "definition": "Автоматическое управление памятью, при котором среда выполнения освобождает память, занятую объектами, которые больше не используются. V8 использует generational GC с молодым и старым поколениями.",
+      "category": "nodejs-core",
+      "relatedTerms": ["v8-engine", "memory-management", "heap"],
+      "sources": [
+        {
+          "title": "V8 Garbage Collection",
+          "url": "https://v8.dev/blog/trash-talk"
+        }
+      ]
+    },
+    {
+      "id": "scalability",
+      "term": "Scalability (Масштабируемость)",
+      "definition": "Способность системы обрабатывать растущую нагрузку путём добавления ресурсов. Вертикальное масштабирование — увеличение мощности сервера, горизонтальное — добавление новых серверов.",
+      "category": "performance",
+      "relatedTerms": ["cluster", "load-balancing", "throughput"],
+      "sources": [
+        {
+          "title": "Scalability Patterns",
+          "url": "https://www.nginx.com/blog/scaling-web-applications-nginx-plus-consul/"
+        }
+      ]
+    },
+    {
+      "id": "stateless",
+      "term": "Stateless (Без сохранения состояния)",
+      "definition": "Архитектурный принцип, при котором сервер не хранит информацию о клиентских сессиях между запросами. Каждый запрос содержит всю необходимую информацию. Упрощает горизонтальное масштабирование.",
+      "category": "architecture",
+      "relatedTerms": ["rest-api", "scalability", "session"],
+      "sources": [
+        {
+          "title": "REST Statelessness",
+          "url": "https://restfulapi.net/statelessness/"
+        }
+      ]
+    },
+    {
+      "id": "endpoint",
+      "term": "Endpoint (Конечная точка)",
+      "definition": "URL-адрес, по которому API принимает запросы для определённого ресурса или операции. Комбинация HTTP-метода и пути определяет конкретное действие над ресурсом.",
+      "category": "http",
+      "relatedTerms": ["rest-api", "routing", "http-methods"],
+      "sources": [
+        {
+          "title": "API Endpoints",
+          "url": "https://smartbear.com/learn/performance-monitoring/api-endpoints/"
+        }
+      ]
+    },
+    {
+      "id": "crud",
+      "term": "CRUD",
+      "definition": "Акроним для четырёх базовых операций с данными: Create (создание), Read (чтение), Update (обновление), Delete (удаление). Соответствует HTTP-методам POST, GET, PUT/PATCH, DELETE.",
+      "category": "architecture",
+      "relatedTerms": ["rest-api", "http-methods", "database"],
+      "sources": [
+        {
+          "title": "CRUD Operations",
+          "url": "https://developer.mozilla.org/en-US/docs/Glossary/CRUD"
+        }
+      ]
+    },
+    {
+      "id": "cors",
+      "term": "CORS (Cross-Origin Resource Sharing)",
+      "definition": "Механизм безопасности браузера, позволяющий веб-странице запрашивать ресурсы с другого домена. Сервер указывает разрешённые источники через заголовки Access-Control-Allow-Origin.",
+      "category": "http",
+      "relatedTerms": ["http-headers", "security", "preflight-request"],
+      "sources": [
+        {
+          "title": "MDN CORS",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+        }
+      ]
+    },
+    {
+      "id": "http-headers",
+      "term": "HTTP Headers (HTTP-заголовки)",
+      "definition": "Метаданные, передаваемые вместе с HTTP-запросами и ответами. Содержат информацию о типе контента, кэшировании, аутентификации, CORS и других аспектах коммуникации.",
+      "category": "http",
+      "relatedTerms": ["cors", "content-type", "caching"],
+      "sources": [
+        {
+          "title": "MDN HTTP Headers",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers"
+        }
+      ]
+    },
+    {
+      "id": "profiling",
+      "term": "Profiling (Профилирование)",
+      "definition": "Анализ программы во время выполнения для определения использования ресурсов (CPU, память, время выполнения функций). Помогает находить узкие места производительности и оптимизировать код.",
+      "category": "testing",
+      "relatedTerms": ["benchmarking", "v8-profiler", "flame-graph"],
+      "sources": [
+        {
+          "title": "Node.js Profiling Guide",
+          "url": "https://nodejs.org/en/docs/guides/simple-profiling/"
+        }
+      ]
+    },
+    {
+      "id": "response-time",
+      "term": "Response Time (Время отклика)",
+      "definition": "Общее время от момента отправки запроса клиентом до получения полного ответа. Включает сетевую задержку, время обработки на сервере и время передачи данных.",
+      "category": "performance",
+      "relatedTerms": ["latency", "ttfb", "throughput"],
+      "sources": [
+        {
+          "title": "Web Performance Metrics",
+          "url": "https://web.dev/metrics/"
+        }
+      ]
+    },
+    {
+      "id": "ttfb",
+      "term": "TTFB (Time To First Byte)",
+      "definition": "Время до получения первого байта ответа от сервера. Измеряет задержку от начала запроса до начала получения ответа. Важная метрика для оценки отзывчивости сервера.",
+      "category": "performance",
+      "relatedTerms": ["response-time", "latency", "server-timing"],
+      "sources": [
+        {
+          "title": "Web.dev TTFB",
+          "url": "https://web.dev/ttfb/"
+        }
+      ]
+    },
+    {
+      "id": "connection-pooling",
+      "term": "Connection Pooling (Пул соединений)",
+      "definition": "Техника кэширования и повторного использования соединений с базой данных или другими сервисами. Уменьшает накладные расходы на установку соединений и улучшает производительность.",
+      "category": "performance",
+      "relatedTerms": ["database", "optimization", "keep-alive"],
+      "sources": [
+        {
+          "title": "Connection Pooling Concepts",
+          "url": "https://node-postgres.com/features/pooling"
+        }
+      ]
+    },
+    {
+      "id": "http2",
+      "term": "HTTP/2",
+      "definition": "Вторая основная версия протокола HTTP. Обеспечивает мультиплексирование запросов, сжатие заголовков, серверный push и приоритизацию потоков. Значительно улучшает производительность по сравнению с HTTP/1.1.",
+      "category": "http",
+      "relatedTerms": ["http-protocol", "multiplexing", "server-push"],
+      "sources": [
+        {
+          "title": "HTTP/2 Specification",
+          "url": "https://httpwg.org/specs/rfc7540.html"
+        }
+      ]
+    },
+    {
+      "id": "websocket",
+      "term": "WebSocket",
+      "definition": "Протокол двунаправленной связи поверх TCP-соединения. Позволяет серверу отправлять данные клиенту без запроса. Идеален для real-time приложений: чаты, игры, уведомления.",
+      "category": "http",
+      "relatedTerms": ["real-time", "socket-io", "bidirectional"],
+      "sources": [
+        {
+          "title": "MDN WebSocket",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/WebSocket"
+        }
+      ]
+    },
+    {
+      "id": "docker",
+      "term": "Docker",
+      "definition": "Платформа контейнеризации, позволяющая упаковывать приложения со всеми зависимостями в изолированные контейнеры. Обеспечивает консистентность окружения от разработки до продакшена.",
+      "category": "architecture",
+      "relatedTerms": ["containerization", "dockerfile", "docker-compose"],
+      "sources": [
+        {
+          "title": "Docker Documentation",
+          "url": "https://docs.docker.com/"
+        }
+      ]
+    },
+    {
+      "id": "containerization",
+      "term": "Containerization (Контейнеризация)",
+      "definition": "Метод виртуализации на уровне операционной системы, при котором приложения запускаются в изолированных пользовательских пространствах (контейнерах), разделяя ядро ОС хоста.",
+      "category": "architecture",
+      "relatedTerms": ["docker", "kubernetes", "microservices"],
+      "sources": [
+        {
+          "title": "Containerization Overview",
+          "url": "https://www.docker.com/resources/what-container/"
+        }
+      ]
+    }
+  ]
+}
