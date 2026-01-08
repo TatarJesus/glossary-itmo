@@ -100,10 +100,11 @@ export const Graph = forwardRef<GraphRef, GraphProps>(({ graphData, terms, onNod
             'border-width': 2,
             'border-color': '#1e293b',
             'text-wrap': 'wrap',
-            'text-max-width': 90,
+            'text-max-width': '90px',
             'text-outline-color': '#0f172a',
             'text-outline-width': 2
-          }
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          } as any
         },
         {
           selector: 'node:selected',
