@@ -443,15 +443,19 @@ body {
 }
 
 .loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  height: 100dvh;
   color: var(--text-secondary);
   gap: 1rem;
   background: var(--bg-primary);
+  z-index: 9999;
 }
 
 .loading::before {
