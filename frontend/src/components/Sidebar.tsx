@@ -55,16 +55,22 @@ export function Sidebar({
       </div>
 
       <div className="terms-list">
-        {filteredTerms.map(term => (
-          <div
-            key={term.id}
-            className={`term-item ${selectedTerm?.id === term.id ? 'selected' : ''}`}
-            onClick={() => onTermSelect(term)}
-          >
-            <h3>{term.term}</h3>
-            <p>{term.definition}</p>
+        {filteredTerms.length === 0 ? (
+          <div className="no-results">
+            Ничего не найдено
           </div>
-        ))}
+        ) : (
+          filteredTerms.map(term => (
+            <div
+              key={term.id}
+              className={`term-item ${selectedTerm?.id === term.id ? 'selected' : ''}`}
+              onClick={() => onTermSelect(term)}
+            >
+              <h3>{term.term}</h3>
+              <p>{term.definition}</p>
+            </div>
+          ))
+        )}
       </div>
     </>
   );

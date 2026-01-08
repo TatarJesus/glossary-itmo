@@ -239,6 +239,13 @@ body {
   color: var(--primary-light);
 }
 
+.no-results {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
 .graph-container {
   flex: 1;
   display: flex;
